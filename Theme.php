@@ -58,4 +58,20 @@ class Theme extends BaseMinc\Theme {
             ]
         ];
     }
+
+    public function renderAllMetas($entity)
+    {
+        foreach ($this->_getSpaceMetadata() as $key => $data) {
+            $label = $this->getMetaLabel($key);
+            ?>
+            <p class="privado">
+                <span class="label required"><?php echo $label; ?></span>
+                <?php if ($this->isEditable() || $entity->getMetadata()[$key]): ?>
+                    <editable-singleselect entity-property="<?php echo $key; ?>" empty-label="Selecione" 
+                        allow-other="true" box-title="<?php echo $label; ?>"></editable-singleselect>
+                <?php endif; ?>
+            </p>
+        <?php 
+        }
+    }
 }
