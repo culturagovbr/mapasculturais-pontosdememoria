@@ -10,7 +10,11 @@ class Theme extends BaseMinc\Theme {
         $app = App::i();
         parent::_init();
 
-        $app->hook('template(space.<<*>>.location-info):after', function(){
+        $app->hook('template(space.<<create|edit|single>>.tabs):end', function(){
+            $this->part('tab-pontos-memoria', ['entity' => $this->data->entity]);
+        });
+
+        $app->hook('template(space.<<create|edit|single>>.tabs-content):end', function(){
             $this->part('tab-espacos', ['entity' => $this->data->entity]);
         });
     }
