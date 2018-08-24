@@ -6,3 +6,16 @@
     width: 170px !important;
   }
 }
+
+#filter-spaces {
+  .search-filter--type {
+    display: none;
+  }
+}
+
+.descricao-meta-ponto-memoria {
+  padding-left: 10px;
+  font-style: italic;
+  margin-bottom: 10px !important;
+  font-size: 11px !important;
+}
