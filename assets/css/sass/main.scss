@@ -23,5 +23,15 @@
   .privado {
     margin-bottom: 5px !important;
   }
-
 } // #tab-pontos-memoria
+
+.action-create {
+  .entity-type.space-type { display: none; }
+}
+
+.js-editable-type.pontos-memoria {
+  display: block;
+  color: deeppink;
+
+  &::after { content: " "; }
+}

@@ -17,6 +17,10 @@ class Theme extends BaseMinc\Theme {
         $app->hook('template(space.<<create|edit|single>>.tabs-content):end', function(){
             $this->part('tab-espacos', ['entity' => $this->data->entity]);
         });
+
+        $app->hook("template(space.create.type):after", function() {
+            $this->part('type', ['label' => $this->dict('entities: Space',false)]);
+        });
     }
 
     static function getThemeFolder() {
@@ -25,7 +29,7 @@ class Theme extends BaseMinc\Theme {
 
     protected static function _getTexts() {
         return [
-            'entities: Space' => 'Pontos de Memória',
+            'entities: Space' => 'Ponto de Memória',
         ];
     }
 
@@ -114,8 +118,7 @@ class Theme extends BaseMinc\Theme {
                 'validations' => [
                     'required' => \MapasCulturais\i::__('É obrigatório informar a temática do ponto de memória')
                 ]
-            ],
-
+            ]
         ];
     }
 
