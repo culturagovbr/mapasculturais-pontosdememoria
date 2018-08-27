@@ -161,4 +161,29 @@ class Theme extends BaseMinc\Theme {
 
         return $filters;
     }
+    
+    function register() {
+        parent::register();
+        $app = App::i();
+        $app->hook('app.register', function(&$registry) {
+            $group = null;
+            $registry['entity_type_groups']['MapasCulturais\Entities\Space'] = array_filter($registry['entity_type_groups']['MapasCulturais\Entities\Space'], function($item) use (&$group) {
+                if ($item->name === 'PontosMemoria') {
+                    $group = $item;
+                    return $item;
+                } else {
+                    return null;
+                }
+            });
+
+            $registry['entity_types']['MapasCulturais\Entities\Space'] = array_filter($registry['entity_types']['MapasCulturais\Entities\Space'], function($item) use ($group) {
+                if ($item->id ==136) {
+                    return $item;
+                } else {
+                    return null;
+                }
+            });
+
+        });
+    }
 }
