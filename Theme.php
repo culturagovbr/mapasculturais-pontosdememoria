@@ -189,4 +189,12 @@ class Theme extends BaseMinc\Theme {
 
         });
     }
+
+    public function getSiteBackGround()
+    {
+        if ($this->subsiteInstance->getBackground()) {
+            $bg = $this->subsiteInstance->getBackground()->url;
+            echo "<section id='home-watermark' style='background: url($bg);background-position: 80% bottom;background-repeat: no-repeat;'></section>";
+        }
+    }
 }

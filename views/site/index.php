@@ -3,11 +3,9 @@ $this->jsObject['spinner'] = $this->asset('img/spinner_192.gif', false);
 
 $app = \MapasCulturais\App::i();
 $em = $app->em;
-?>
 
-<?php if ($bg = $this->subsiteInstance->background->url): ?>
-    <section id="home-watermark" style="background: url('<?php echo $bg ?>')"></section>
-<?php endif; ?>
+$this->getSiteBackground();
+?>
 
 <?php $this->part('home-search'); ?>
 
