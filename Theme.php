@@ -157,6 +157,15 @@ class Theme extends BaseMinc\Theme {
                 'validations' => [
                     'required' => 'Preencher a temática'
                 ]
+            ],
+            [
+                'fieldType' => 'checklist',
+                'label' => 'Estado',
+                'placeholder' => 'Selecione os Estados',
+                'filter' => [
+                    'param' => 'En_Estado',
+                    'value' => 'IN({val})'
+                ],
             ]
         ];
 
