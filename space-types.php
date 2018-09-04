@@ -2,6 +2,12 @@
 
 $core_space_types = include APPLICATION_PATH.'/conf/space-types.php';
 
+$core_space_types['metadata']['En_Municipio'] = array(
+    'label' => \MapasCulturais\i::__('Município'),
+    'validations' => array(
+        'required' => \MapasCulturais\i::__('O Município é obrigatório!')
+    )
+);
 $core_space_types['metadata']['En_Estado'] = array(
     'label' => \MapasCulturais\i::__('Estado'),
     'type' => 'select',

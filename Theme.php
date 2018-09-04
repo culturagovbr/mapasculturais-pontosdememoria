@@ -166,7 +166,18 @@ class Theme extends BaseMinc\Theme {
                     'param' => 'En_Estado',
                     'value' => 'IN({val})'
                 ],
-            ]
+            ],
+            [
+                'fieldType' => 'text',
+                'label' => 'Município',
+                'isArray' => false,
+                'placeholder' => 'Pesquisar por Município',
+                'isInline' => false,
+                'filter' => [
+                    'param' => 'En_Municipio',
+                    'value' => 'ILIKE(*{val}*)'
+                ]
+            ],
         ];
 
         App::i()->applyHookBoundTo($this, 'search.filters', [&$filters]);
