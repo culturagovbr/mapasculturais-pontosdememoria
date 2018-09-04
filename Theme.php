@@ -178,6 +178,18 @@ class Theme extends BaseMinc\Theme {
                     'value' => 'ILIKE(*{val}*)'
                 ]
             ],
+            'verificados' => [
+                'label' => $this->dict('search: verified results', false),
+                'tag' => $this->dict('search: verified', false),
+                'placeholder' => 'Exibir somente ' . $this->dict('search: verified results', false),
+                'fieldType' => 'checkbox-verified',
+                'addClass' => 'verified-filter',
+                'isArray' => false,
+                'filter' => [
+                    'param' => '@verified',
+                    'value' => '1'
+                ]
+            ]
         ];
 
         App::i()->applyHookBoundTo($this, 'search.filters', [&$filters]);
