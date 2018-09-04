@@ -81,7 +81,7 @@ class Theme extends BaseMinc\Theme {
 
             'tematica_ponto_memoria' => [
                 'label' => 'Temática dos Pontos de Memória',
-                'type' => 'select',
+                'type' => 'multiselect',
                 'options' => [
                     'Acervo e centro de memória',
                     'Arquivo/Arquivo Digital',
@@ -127,19 +127,21 @@ class Theme extends BaseMinc\Theme {
         foreach ($this->_getSpaceMetadata() as $key => $data) {
             $tipo = $this->getMetaConfig($key,'type');
             if ("select" === $tipo) {
-                $label = $this->getMetaConfig($key, 'label');
-                $desc = $this->getMetaConfig($key, 'description');
-                ?>
-                <p class="privado">
-                    <span class="label required"> <?php echo $label; ?></span>
-                    <?php if ($this->isEditable() || isset($entity->getMetadata()[$key])): ?>
-                        <editable-singleselect entity-property="<?php echo $key; ?>" empty-label="Selecione"
-                                               allow-other="true" box-title="<?php echo $label; ?>"></editable-singleselect>
-                    <?php endif; ?>
-                </p>
-                <p class="descricao-meta-ponto-memoria"> <?php echo $desc; ?> </p>
-                <?php
+               $selectType = "singleselect";
+            } else if ("multiselect" === $tipo) {
+                $selectType = "multiselect";
             }
+            $label = $this->getMetaConfig($key, 'label');
+            $desc = $this->getMetaConfig($key, 'description');
+            ?>
+            <p class="privado">
+                <span class="label required"> <?php echo $label; ?></span>
+                <?php if ($this->isEditable() || isset($entity->getMetadata()[$key])): ?>
+                    <editable-<?php echo $selectType ?> entity-property="<?php echo $key; ?>" empty-label="Selecione" allow-other="true" box-title="<?php echo $label; ?>"></editable-<?php echo $selectType ?>>
+                <?php endif; ?>
+            </p>
+            <p class="descricao-meta-ponto-memoria"> <?php echo $desc; ?> </p>
+            <?php
         }
     }
 
