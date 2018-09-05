@@ -154,7 +154,7 @@ class Theme extends BaseMinc\Theme {
                 'placeholder' => 'Selecione as Temáticas',
                 'filter' => [
                     'param' => 'tematica_ponto_memoria',
-                    'value' => 'IN({val})'
+                    'value' => 'ILIKE(*{val}*)'
                 ],
                 'validations' => [
                     'required' => 'Preencher a temática'
