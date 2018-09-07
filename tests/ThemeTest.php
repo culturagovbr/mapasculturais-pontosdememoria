@@ -14,6 +14,14 @@ final class ThemeTest extends TestCase
 
         $val = $tema->getMetaConfig('conselho_gestor','label');
         $this->assertEquals('Possui Conselho Gestor?',$val);
+
+        // Valida contagem total das temáticas fixas dos pontos de memória
+        $val = $tema->getMetaConfig('tematica_ponto_memoria','options');
+        $this->assertCount(31,$val);
+
+        // Valida ordem alfabética das temáticas fixas dos pontos de memória
+        $this->assertEquals('Acervo e centro de memória',$val[0]);
+        $this->assertEquals('Turismo Comunitário',$val[30]);
 	}
 
 	public function testGetSpaceMetadata()
@@ -25,6 +33,7 @@ final class ThemeTest extends TestCase
         $this->assertArrayHasKey('conselho_gestor',$metadados);
         $this->assertArrayHasKey('tematica_ponto_memoria',$metadados);
 
+        // Valida total de metadados próprios dos pontos de memória
         $this->assertEquals(3,count($metadados));
     }
 }
