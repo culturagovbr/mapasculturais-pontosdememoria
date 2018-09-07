@@ -1,5 +1,5 @@
 <?php
-require_once ( __DIR__ ."/../Theme.php");
+require_once (__DIR__ ."/../Theme.php");
 
 use PHPUnit\Framework\TestCase;
 use PontosMemoria\Theme;
