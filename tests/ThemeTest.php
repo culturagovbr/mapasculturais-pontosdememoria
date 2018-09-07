@@ -7,12 +7,24 @@ use PontosMemoria\Theme;
 final class ThemeTest extends TestCase
 {
 	public function testGetMetaConfig() {
-		$m = new PontosMemoria\Theme;
+		$tema = new Theme;
 
-		$val = $m->getMetaConfig('inventario_participativo','type');
+		$val = $tema->getMetaConfig('inventario_participativo','type');
 		$this->assertEquals('select',$val);
 
-        $val = $m->getMetaConfig('conselho_gestor','label');
+        $val = $tema->getMetaConfig('conselho_gestor','label');
         $this->assertEquals('Possui Conselho Gestor?',$val);
 	}
+
+	public function testGetSpaceMetadata()
+    {
+        $tema = new Theme;
+        $metadados = $tema->_getSpaceMetadata();
+
+        $this->assertArrayHasKey('inventario_participativo',$metadados);
+        $this->assertArrayHasKey('conselho_gestor',$metadados);
+        $this->assertArrayHasKey('tematica_ponto_memoria',$metadados);
+
+        $this->assertEquals(3,count($metadados));
+    }
 }
